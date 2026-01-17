@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vraisoft | Solutions IT & Mini Datacenters | Services Informatiques Complets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-orange: #FF6B35;
+            --dark-orange: #D45A2A;
+            --light-orange: #FF9A6C;
+            --extra-light-orange: #FFE8DE;
+            --dark-bg: #0F172A;
+            --medium-bg: #1E293B;
+            --light-bg: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-light: #FFFFFF;
+            --text-gray: #64748B;
+            --border-color: #E2E8F0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        /* Typographie améliorée */
+        h1 {
+            font-size: 3.2rem;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+        
+        h4 {
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Boutons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background-color: var(--primary-orange);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            transition: padding 0.4s ease;
+        }
+        
+        header.scrolled .nav-container {
+            padding: 10px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            overflow: hidden;
+        }
+        
+        /* Styles pour le logo image */
+        .logo-img {
+            width: 210px;       /* full logo readable */
+            height: auto;       /* keep proportions */
+            display: block;
+            transition: all 0.3s ease;
+            margin-top: -30px;
+        }
+
+        header.scrolled .logo-img {
+            width: 180px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-orange);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-bg);
+            background: none;
+            border: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--light-bg), transparent);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .hero-stats {
+            display: flex;
+            margin-top: 80px;
+            gap: 40px;
+            animation: fadeInUp 1s ease 0.6s both;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 107, 53, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .stat-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background-color: var(--primary-orange);
+            transition: height 0.4s ease;
+        }
+        
+        .service-card:hover:before {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--extra-light-orange);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--primary-orange);
+            transform: scale(1.1);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--primary-orange);
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .service-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-gray);
+        }
+        
+        .service-features i {
+            color: var(--primary-orange);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* À propos Section - Amélioration de l'alignement */
+        .about {
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.8rem;
+        }
+        
+        .about-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s ease;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .about-image:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid var(--primary-orange);
+            border-radius: 16px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .features-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+        
+        .features-list i {
+            color: var(--primary-orange);
+            margin-right: 12px;
+            margin-top: 3px;
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-orange));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-orange);
+            font-weight: 700;
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+        
+        /* Footer - Newsletter supprimée */
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-about {
+            grid-column: span 2;
+        }
+        
+        /* Logo dans le footer */
+        .footer-logo-img {
+            height: 52px;
+            width: auto;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-links h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-orange);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-orange);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 12px;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Bouton demande de devis visible seulement dans la section CTA */
+        .devis-btn {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        /* Modal pour le formulaire de devis */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background-color: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-30px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            color: var(--dark-bg);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-orange);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-bg);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-submit-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+        }
+        
+        /* Message de confirmation */
+        .confirmation-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Style pour le message startup */
+        .startup-message {
+            background-color: #FFE8DE;
+            border-left: 4px solid var(--primary-orange);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .startup-message h4 {
+            color: var(--dark-orange);
+            margin-bottom: 10px;
+        }
+        
+        .startup-message p {
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-about {
+                grid-column: span 1;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .about-image:after {
+                top: 15px;
+                left: 15px;
+                right: -15px;
+                bottom: -15px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 30px 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section-padding {
+                padding: 80px 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-img {
+                width: 170px;
+                height: auto;
+            }
+            
+            header.scrolled .logo-img {
+                width: 150px;
+            }
+            
+            .about-image:after {
+                top: 10px;
+                left: 10px;
+                right: -10px;
+                bottom: -10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-about {
+                grid-column: span 1;
+            }
+            
+            .modal {
+                width: 95%;
+                max-height: 95vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.05rem;
+            }
+            
+            .stat-item {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+            
+            .stat-icon {
+                margin-bottom: 10px;
+            }
+            
+            .footer-logo-img {
+                height: 50px;
+            }
+            
+            .logo-img {
+                width: 155px;
+                height: auto;
+            }
+            
+            header.scrolled .logo-img {
+                width: 140px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .modal-header, .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="vraisoft-logo-navbar-210w.png" alt="Vraisoft" class="logo-img">
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Modal pour demande de devis -->
+    <div class="modal-overlay" id="devisModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Demande de Devis</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Remplissez ce formulaire pour recevoir un devis personnalisé. Nous vous répondrons dans les 24 heures ouvrables.</p>
+                
+                <form id="devisForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom complet *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="entreprise">Entreprise</label>
+                            <input type="text" id="entreprise" name="entreprise">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service concerné *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option value="Mini Datacenters">Mini Datacenters</option>
+                            <option value="Infrastructure Réseau">Infrastructure Réseau</option>
+                            <option value="Cybersécurité">Cybersécurité</option>
+                            <option value="Communications Unifiées">Communications Unifiées</option>
+                            <option value="Support & Réparation IT">Support & Réparation IT</option>
+                            <option value="Conseil IT & Audits">Conseil IT & Audits</option>
+                            <option value="Plusieurs services">Plusieurs services</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Détails de votre projet *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre besoin, la taille de votre entreprise, vos objectifs, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Budget estimé</label>
+                        <select id="budget" name="budget">
+                            <option value="">Sélectionnez une fourchette budgétaire</option>
+                            <option value="Moins de 5 000MAD">Moins de 5 000MAD</option>
+                            <option value="5 000MAD - 15 000MAD">5 000MAD - 15 000MAD</option>
+                            <option value="15 000MAD - 50 000MAD">15 000MAD - 50 000MAD</option>
+                            <option value="50 000MAD - 100 000MAD">50 000MAD - 100 000MAD</option>
+                            <option value="Plus de 100 000MAD">Plus de 100 000MAD</option>
+                            <option value="À déterminer">À déterminer</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn form-submit-btn">
+                        <i class="fas fa-paper-plane"></i> Envoyer la demande
+                    </button>
+                </form>
+                
+                <div class="confirmation-message" id="confirmationMessage">
+                    <i class="fas fa-check-circle"></i> Votre demande a été préparée ! Un email va s'ouvrir avec votre demande pré-remplie. Il suffit de l'envoyer.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content animate-on-scroll">
+                <h1>Solutions IT Complètes & Mini Datacenters pour les Entreprises Modernes</h1>
+                <p>Vraisoft fournit des infrastructures technologiques de niveau entreprise, des solutions de cybersécurité et des services IT gérés pour optimiser les opérations, renforcer la sécurité et piloter la transformation numérique des entreprises de toutes tailles.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn"><i class="fas fa-server"></i> Découvrir nos solutions</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Demander une consultation</a>
+                </div>
+                
+                <div class="startup-message animate-on-scroll">
+                    <h4><i class="fas fa-rocket"></i> Startup en pleine croissance</h4>
+                    <p>Nous sommes une jeune entreprise dynamique spécialisée dans les solutions IT innovantes. Bien que nous soyons nouveaux sur le marché, notre équipe expérimentée est prête à vous accompagner avec passion et expertise dans votre transformation numérique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services IT Complets</h2>
+                <p>Nous proposons des solutions technologiques de bout en bout adaptées à vos besoins spécifiques et aux standards de l'industrie.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Mini Datacenters</h3>
+                    <p>Conception, implémentation et gestion de solutions de datacenter compactes, haute efficacité avec une fiabilité de niveau entreprise et une évolutivité.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Conception et planification sur mesure</li>
+                        <li><i class="fas fa-check"></i> Optimisation énergétique et refroidissement</li>
+                        <li><i class="fas fa-check"></i> Solutions serveurs haute densité</li>
+                        <li><i class="fas fa-check"></i> Surveillance à distance 24/7</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Infrastructure Réseau</h3>
+                    <p>Solutions complètes de câblage structuré pour données, voix et vidéo avec installations certifiées, tests et documentation.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Câblage fibre optique et cuivre</li>
+                        <li><i class="fas fa-check"></i> Conception et optimisation réseau</li>
+                        <li><i class="fas fa-check"></i> Déploiement réseaux sans fil</li>
+                        <li><i class="fas fa-check"></i> Conformité et certification</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersécurité</h3>
+                    <p>Protection complète contre les menaces digitales avec solutions de sécurité avancées, monitoring et formation des employés.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Détection & prévention des menaces</li>
+                        <li><i class="fas fa-check"></i> Firewall & sécurité des terminaux</li>
+                        <li><i class="fas fa-check"></i> Audits sécurité & conformité</li>
+                        <li><i class="fas fa-check"></i> Plan de réponse aux incidents</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <h3>Communications Unifiées</h3>
+                    <p>Systèmes VoIP modernes et solutions de collaboration avec intégration transparente, fonctionnalités avancées et solutions de communication économiques.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Déploiement système téléphonique VoIP</li>
+                        <li><i class="fas fa-check"></i> Solutions de visioconférence</li>
+                        <li><i class="fas fa-check"></i> Technologie centre d'appels</li>
+                        <li><i class="fas fa-check"></i> Plateformes de messagerie unifiée</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Support & Réparation IT</h3>
+                    <p>Support matériel et logiciel complet avec temps de réponse rapides, maintenance proactive et perturbation minimale de votre activité.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Support sur site et à distance</li>
+                        <li><i class="fas fa-check"></i> Réparation & remplacement matériel</li>
+                        <li><i class="fas fa-check"></i> Dépannage logiciel</li>
+                        <li><i class="fas fa-check"></i> Maintenance préventive</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Conseil IT & Audits</h3>
+                    <p>Planification stratégique technologique, évaluations de conformité et services d'optimisation pour maximiser vos investissements IT.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Planification roadmap technologique</li>
+                        <li><i class="fas fa-check"></i> Audits conformité & sécurité</li>
+                        <li><i class="fas fa-check"></i> Évaluation infrastructure IT</li>
+                        <li><i class="fas fa-check"></i> Planification continuité d'activité</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h2>Partenaire IT de Confiance</h2>
+                    <p>Vraisoft est à l'avant-garde de la fourniture de solutions technologiques innovantes. Notre mission est d'équiper les entreprises avec des infrastructures IT fiables, sécurisées et évolutives qui stimulent la croissance et l'avantage concurrentiel.</p>
+                    <p>Avec une équipe d'ingénieurs certifiés, de chefs de projet et de spécialistes en sécurité, nous fournissons des services technologiques complets depuis la consultation initiale jusqu'à l'implémentation et le support continu.</p>
+                    
+                    <div class="startup-message">
+                        <h4><i class="fas fa-lightbulb"></i> Notre approche startup</h4>
+                        <p>En tant que jeune entreprise, nous combinons l'agilité d'une startup avec l'expertise d'une équipe chevronnée. Nous sommes flexibles, réactifs et toujours à l'écoute de vos besoins spécifiques pour vous offrir des solutions sur mesure.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-certificate"></i> Professionnels certifiés</li>
+                        <li><i class="fas fa-clock"></i> Surveillance & support 24/7</li>
+                        <li><i class="fas fa-handshake"></i> Solutions indépendantes des fournisseurs</li>
+                        <li><i class="fas fa-chart-line"></i> Gestion proactive des performances</li>
+                        <li><i class="fas fa-lock"></i> Approche sécurité d'abord</li>
+                        <li><i class="fas fa-headset"></i> Gestion de compte dédiée</li>
+                    </ul>
+                    
+                    <div class="devis-btn">
+                        <button class="btn open-devis-modal">
+                            <i class="fas fa-file-alt"></i> Demander un devis gratuit
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="about-image animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Équipe Vraisoft en collaboration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section-padding" id="contact">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2>Transformez Votre Technologie d'Entreprise Aujourd'hui</h2>
+                <p>Contactez notre équipe d'experts IT pour une consultation gratuite et découvrez comment Vraisoft peut optimiser votre infrastructure technologique, renforcer la sécurité et soutenir vos objectifs de croissance.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:0604401677" class="btn"><i class="fas fa-phone-alt"></i> Appeler: 06 04 40 16 77</a>
+                    <a href="mailto:contact@vraisoft.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email: contact@vraisoft.com</a>
+                </div>
+                <div class="devis-btn">
+                    <button class="btn open-devis-modal" style="background-color: var(--dark-bg); margin-top: 20px;">
+                        <i class="fas fa-file-alt"></i> Obtenir un devis personnalisé
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="vraisoft-logo-transparent.png" alt="Vraisoft" class="footer-logo-img">
+                    <p>Vraisoft fournit des solutions IT de niveau entreprise incluant des mini datacenters, des infrastructures réseau, de la cybersécurité et des services gérés pour aider les entreprises à réaliser leur transformation numérique et leur excellence opérationnelle.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Mini Datacenters</a></li>
+                        <li><a href="#services">Câblage Réseau</a></li>
+                        <li><a href="#services">Cybersécurité</a></li>
+                        <li><a href="#services">Systèmes VoIP</a></li>
+                        <li><a href="#services">Support & Réparation IT</a></li>
+                        <li><a href="#services">Audits & Conseil IT</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Coordonnées</h3>
+                    <p><i class="fas fa-phone-alt"></i> 06 04 40 16 77</p>
+                    <p><i class="fas fa-envelope"></i> contact@vraisoft.com</p>
+                    <p><i class="fas fa-clock"></i> 24h/24, 7j/7</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Vraisoft Solutions IT. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Animate on scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Gestion de la modale de demande de devis
+        const devisModal = document.getElementById('devisModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const openDevisModalBtns = document.querySelectorAll('.open-devis-modal');
+        const devisForm = document.getElementById('devisForm');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        
+        // Ouvrir la modale
+        openDevisModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                devisModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Fermer la modale
+        closeModalBtn.addEventListener('click', () => {
+            devisModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Fermer la modale en cliquant à l'extérieur
+        devisModal.addEventListener('click', (e) => {
+            if (e.target === devisModal) {
+                devisModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Gestion de la soumission du formulaire
+        devisForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Récupérer les valeurs du formulaire
+            const nom = document.getElementById('nom').value;
+            const entreprise = document.getElementById('entreprise').value;
+            const email = document.getElementById('email').value;
+            const telephone = document.getElementById('telephone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            const budget = document.getElementById('budget').value;
+            
+            // Créer le contenu de l'email
+            const subject = `Demande de devis - ${entreprise || nom}`;
+            const body = `
+Bonjour Vraisoft,
+
+Je souhaite obtenir un devis pour vos services IT.
+
+Informations client :
+- Nom : ${nom}
+- Entreprise : ${entreprise || 'Non spécifié'}
+- Email : ${email}
+- Téléphone : ${telephone}
+
+Détails de la demande :
+- Service concerné : ${service}
+- Budget estimé : ${budget || 'Non spécifié'}
+- Message : ${message}
+
+Je vous remercie de me faire parvenir un devis personnalisé.
+
+Cordialement,
+${nom}
+${entreprise ? `(${entreprise})` : ''}
+            `;
+            
+            // Encoder l'email pour l'URL
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(body);
+            
+            // Créer le lien mailto (pour le test, envoyer à h.jratlou@vraisoft.com)
+            const mailtoLink = `mailto:contact@vraisoft.com?subject=${encodedSubject}&body=${encodedBody}`;
+            
+            // Afficher le message de confirmation
+            confirmationMessage.style.display = 'block';
+            
+            // Faire défiler vers le message de confirmation
+            confirmationMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Ouvrir le client de messagerie après un court délai
+            setTimeout(() => {
+                window.open(mailtoLink, '_blank');
+            }, 1500);
+            
+            // Réinitialiser le formulaire après 5 secondes
+            setTimeout(() => {
+                devisForm.reset();
+                confirmationMessage.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
